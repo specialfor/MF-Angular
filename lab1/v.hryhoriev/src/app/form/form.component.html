@@ -1,0 +1,6 @@
+<div>
+  <label>Text: </label>
+  <input [(ngModel)]="text" placeholder="Enter some text">
+  <p>{{text}}</p>
+  <button (click)="resetClicked()" [disabled]="text === ''">Reset</button>
+</div>
