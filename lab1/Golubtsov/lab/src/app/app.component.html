@@ -1,0 +1,8 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <input #text (keyup)="onInput($event, text.value)"/>
+    <br><br>
+    {{textField}}
+    <br><br>
+    <button [disabled]="buttonStatus == 'disabled'" (click)="clearText(text.value);  text.value=''">Clear text</button>
+</div>
