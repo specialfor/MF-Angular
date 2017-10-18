@@ -1,0 +1,11 @@
+<div>
+  <p>
+    Enter your text:
+    <input type="text" [(ngModel)]='text' placeholder="Your text">
+  </p>
+  <p>
+    Your text:
+    <Label>{{text}}</Label>
+  </p>
+  <button (click)="deleteText()" [disabled]="text === ''">Delete my text </button>
+</div>
