@@ -1,0 +1,13 @@
+div{
+  font-size: 30px;
+}
+
+button:disabled{
+  background: rgba(213, 26, 37, 0.69);
+  -webkit-text-fill-color: #ffffff;
+}
+
+button {
+  background: #dc1434;
+  -webkit-text-fill-color: #080808;
+}
