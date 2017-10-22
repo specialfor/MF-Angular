@@ -1,0 +1,5 @@
+<h2 [ngStyle]="{backgroundColor: getColor()}"
+    [ngClass]="{available: isAvailable}">
+  This is book with name: {{bookName}} and number of pages: {{getNumberOfPages()}}
+  <p *ngIf="isAvailable">And book is available</p>
+</h2>

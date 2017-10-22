@@ -1,0 +1,7 @@
+<button [disabled]='isButtonDisabled'
+(click) ="onButtonClicked($event)">Добавить книгу </button>
+<input type="text" [(ngModel)]='newBook'>
+<p>{{newBook}}</p>
+<app-book></app-book>
+<app-book></app-book>
+<app-book></app-book>
