@@ -1,0 +1,14 @@
+p{
+  color: #0c15c4;
+  font-family: "Times New Roman", Helvetica, sans-serif;
+  font-size: 200%;
+}
+
+input, label{
+  color: #13c50d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input{
+  font-size: 100%;
+}
