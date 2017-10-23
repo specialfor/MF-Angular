@@ -1,0 +1,7 @@
+<div>
+  <label>Input </label>
+  <input [(ngModel)]="text" placeholder="Enter some text here">
+  <p>Your text:</p>
+  <p>{{text}}</p>
+  <button style="background-color: darksalmon;" (click)="delete()" [disabled]="text === ''">Delete</button>
+</div>
