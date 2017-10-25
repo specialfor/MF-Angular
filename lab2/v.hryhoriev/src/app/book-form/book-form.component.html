@@ -1,6 +1,8 @@
 <div>
-  <input [(ngModel)]="book.title" placeholder="Enter the title of book">
-  <input [(ngModel)]="book.author" placeholder="Enter the author of book">
-  <button (click)="addClicked()" [disabled]="isAddDisabled">Reset</button>
+  <input [(ngModel)]="book.title" placeholder="Enter title">
+  <br>
+  <input [(ngModel)]="book.author" placeholder="Enter author">
+  <br>
+  <button (click)="addClicked()" [disabled]="isAddDisabled()">Add</button>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { Book } from '../Models/Book';
 
 @Component({
@@ -7,13 +7,17 @@ import { Book } from '../Models/Book';
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent {
-  book: Book = {
-    title: '',
-    author: ''
-  };
+  book: Book = Book.createEmpty();
 
-  isAddDisabled = this.book.title !== '' && this.book.author !== '';
+  @Output() onAdded = new EventEmitter<Book>();
+
+  isAddDisabled(): boolean {
+    return this.book.title === '' || this.book.author === '';
+  }
 
   addClicked(): void {
+    this.onAdded.emit(this.book.copy());
+    this.book = Book.createEmpty();
   }
+
 }
