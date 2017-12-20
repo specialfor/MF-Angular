@@ -13,6 +13,13 @@ export class CounterService {
     this.bookCounters.push([book, 0]);
   }
 
+  deleteBook(book: Book) {
+    const index = this.bookCounters.findIndex(t => t[0] === book);
+    if (index !== -1) {
+      this.bookCounters.splice(index, 1);
+    }
+  }
+
   updateCounterFor(book: Book) {
     const index = this.bookCounters.findIndex(t => t[0] === book);
     this.bookCounters[index][1]++;

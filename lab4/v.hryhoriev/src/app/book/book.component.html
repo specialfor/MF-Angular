@@ -4,7 +4,8 @@
     <p>Book's title: {{book.title}}</p>
     <p>Book's author: {{book.author}}</p>
     <p>Is active? {{book.isActive}} </p>
-    <p>How much does this book change status? {{userService.counterService.counterFor(book)}}</p>
+    <p *ngIf="isDetails">How much does this book change status? {{userService.counterService.counterFor(book)}}</p>
   </div>
-  <button (click)="movedToTapped()">{{buttonTitle()}}</button>
+  <button *ngIf="isDetails" (click)="movedToTapped()">{{buttonTitle()}}</button>
+  <button *ngIf="isDetails" (click)="deleteBook()">Delete</button>
 </div>

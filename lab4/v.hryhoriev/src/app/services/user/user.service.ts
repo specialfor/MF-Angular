@@ -68,4 +68,15 @@ export class UserService {
     curSection.push(book);
   }
 
+  deleteBook(book: Book) {
+    this.counterService.deleteBook(book);
+
+    const curSection = book.isActive ? this.activeBooks : this.inactiveBooks;
+
+    const index = curSection.indexOf(book);
+    if (index !== -1) {
+      curSection.splice(index, 1);
+    }
+  }
+
 }
