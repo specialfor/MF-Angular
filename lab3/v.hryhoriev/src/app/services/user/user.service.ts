@@ -17,7 +17,18 @@ export class UserService {
     new Book('Masha', 'Domareva', false)
   ];
 
-  constructor(private counterService: CounterService) { }
+  constructor(public counterService: CounterService) {
+    this.counterService = counterService;
+
+    const books: [Book, number][] = [];
+    for (const b of this.activeBooks) {
+      books.push([b, 0]);
+    }
+    for (const b of this.inactiveBooks) {
+      books.push([b, 0]);
+    }
+    this.counterService.bookCounters = books;
+  }
 
   getActiveBooks(): Observable<Book[]> {
     return of(this.activeBooks);
@@ -28,6 +39,8 @@ export class UserService {
   }
 
   addBook(book: Book) {
+    this.counterService.addBook(book);
+
     const tempBooks = book.isActive ? this.activeBooks : this.inactiveBooks;
 
     tempBooks.push(book);
@@ -43,12 +56,12 @@ export class UserService {
   }
 
   moveBook(book: Book) {
+    this.counterService.updateCounterFor(book);
+
     const prevSection = book.isActive ? this.activeBooks : this.inactiveBooks;
     const curSection = !book.isActive ? this.activeBooks : this.inactiveBooks;
 
-    const index = prevSection.findIndex(b => {
-      return b.title === book.title;
-    });
+    const index = prevSection.indexOf(book);
     prevSection.splice(index, 1);
 
     book.isActive = !book.isActive;

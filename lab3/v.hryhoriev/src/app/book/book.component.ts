@@ -12,8 +12,11 @@ import {Book} from '../models/Book';
 export class BookComponent {
   @Input() book: Book;
   @Input() index: number;
+  @Input() userService: UserService;
 
-  constructor(private userService: UserService) {}
+  constructor(userService: UserService) {
+    this.userService = userService;
+  }
 
   movedToTapped(): void {
     this.userService.moveBook(this.book);
