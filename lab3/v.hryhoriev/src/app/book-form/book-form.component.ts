@@ -1,4 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
+
+import { UserService } from '../services/user/user.service';
+
 import { Book } from '../models/Book';
 
 @Component({
@@ -9,14 +12,14 @@ import { Book } from '../models/Book';
 export class BookFormComponent {
   book: Book = Book.createEmpty();
 
-  @Output() onAdded = new EventEmitter<Book>();
+  constructor(private userService: UserService) {}
 
   isAddDisabled(): boolean {
     return this.book.title === '' || this.book.author === '';
   }
 
   addClicked(): void {
-    this.onAdded.emit(this.book.copy());
+    this.userService.addBook(this.book);
     this.book = Book.createEmpty();
   }
 

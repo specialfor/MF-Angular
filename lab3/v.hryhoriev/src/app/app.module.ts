@@ -7,6 +7,7 @@ import { BookFormComponent } from './book-form/book-form.component';
 import { BookComponent } from './book/book.component';
 
 import { UserService } from './services/user/user.service';
+import { CounterService } from './services/counter/counter.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { UserService } from './services/user/user.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

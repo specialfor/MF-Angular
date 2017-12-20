@@ -1,4 +1,7 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input} from '@angular/core';
+
+import { UserService } from '../services/user/user.service';
+
 import {Book} from '../models/Book';
 
 @Component({
@@ -10,10 +13,10 @@ export class BookComponent {
   @Input() book: Book;
   @Input() index: number;
 
-  @Output() onMovedTo = new EventEmitter<Book>();
+  constructor(private userService: UserService) {}
 
   movedToTapped(): void {
-    this.onMovedTo.emit(this.book);
+    this.userService.moveBook(this.book);
   }
 
   buttonTitle(): string {
