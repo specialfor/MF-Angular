@@ -1,5 +1,8 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Book} from '../Models/Book';
+import {Component, Input} from '@angular/core';
+
+import { UserService } from '../services/user/user.service';
+
+import {Book} from '../models/Book';
 
 @Component({
   selector: 'app-book',
@@ -9,10 +12,17 @@ import {Book} from '../Models/Book';
 export class BookComponent {
   @Input() book: Book;
   @Input() index: number;
+  @Input() userService: UserService;
 
-  @Output() onDeleted = new EventEmitter<Book>();
+  constructor(userService: UserService) {
+    this.userService = userService;
+  }
 
-  deleteTapped(): void {
-    this.onDeleted.emit(this.book);
+  movedToTapped(): void {
+    this.userService.moveBook(this.book);
+  }
+
+  buttonTitle(): string {
+    return this.book.isActive ? 'Inactivate' : 'Activate';
   }
 }

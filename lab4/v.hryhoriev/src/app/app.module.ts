@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookComponent } from './book/book.component';
-import { AppRoutingModule } from './/app-routing.module';
+
+import { UserService } from './services/user/user.service';
+import { CounterService } from './services/counter/counter.service';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,9 @@ import { AppRoutingModule } from './/app-routing.module';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRoutingModule
+    FormsModule
   ],
-  providers: [],
+  providers: [UserService, CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
