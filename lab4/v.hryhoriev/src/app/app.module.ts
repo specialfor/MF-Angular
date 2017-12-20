@@ -8,6 +8,7 @@ import { BookComponent } from './book/book.component';
 
 import { UserService } from './services/user/user.service';
 import { CounterService } from './services/counter/counter.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CounterService } from './services/counter/counter.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [UserService, CounterService],
   bootstrap: [AppComponent]
