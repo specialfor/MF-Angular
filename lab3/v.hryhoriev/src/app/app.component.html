@@ -1,6 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <app-book-form (onAdded)="onAdded($event)"></app-book-form>
-  <app-book *ngFor="let book of books; let idx = index" [book]="book"
-            [index]="idx + 1" (onMovedTo)="onMovedTo($event)"></app-book>
+  <div id="container">
+    <div id="active-books">
+      <app-book *ngFor="let book of activeBooks; let idx = index" [book]="book"
+                [index]="idx + 1" (onMovedTo)="onMovedTo($event)"></app-book>
+    </div>
+    <div id="inactive-books">
+      <app-book *ngFor="let book of inactiveBooks; let idx = index" [book]="book"
+                [index]="idx + 1" (onMovedTo)="onMovedTo($event)"></app-book>
+    </div>
+  </div>
 </div>

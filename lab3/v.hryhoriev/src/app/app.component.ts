@@ -7,11 +7,14 @@ import {Book} from './Models/Book';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  books: Book[] = new Array();
+  activeBooks: Book[] = [];
+  inactiveBooks: Book[] = [];
 
   onAdded(book: Book): void {
-    this.books.push(book);
-    this.books.sort((a, b) => {
+    const tempBooks = book.isActive ? this.activeBooks : this.inactiveBooks;
+
+    tempBooks.push(book);
+    tempBooks.sort((a, b) => {
       if (a.title > b.title) {
         return 1;
       }
@@ -23,7 +26,15 @@ export class AppComponent {
   }
 
   onMovedTo(book: Book): void {
-    let index = this.books.indexOf(book);
-    this.books.splice(index, 1);
+    const prevSection = book.isActive ? this.activeBooks : this.inactiveBooks;
+
+    const index = prevSection.findIndex(b => {
+      return b.title === book.title;
+    });
+    prevSection.splice(index, 1);
+
+    book.isActive = !book.isActive;
+    this.onAdded(book);
   }
+
 }

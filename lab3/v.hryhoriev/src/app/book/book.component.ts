@@ -15,4 +15,8 @@ export class BookComponent {
   movedToTapped(): void {
     this.onMovedTo.emit(this.book);
   }
+
+  buttonTitle(): string {
+    return this.book.isActive ? 'Inactivate' : 'Activate';
+  }
 }

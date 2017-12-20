@@ -3,7 +3,8 @@
   <br>
   <input [(ngModel)]="book.author" placeholder="Enter author">
   <br>
-  <input type="checkbox" name="Is active?" [ngModel]="book.isActive">
+  <input [(ngModel)]="book.isActive" type="checkbox">
+  <label>Is actice?</label>
   <br>
   <button (click)="addClicked()" [disabled]="isAddDisabled()">Add</button>
 </div>
