@@ -1,14 +1,22 @@
-import {Component} from '@angular/core';
-import {Book} from './Models/Book';
+import { Component, OnInit } from '@angular/core';
+import { Book } from './models/Book';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   activeBooks: Book[] = [];
   inactiveBooks: Book[] = [];
+
+  constructor(private userService: UserService) { }
+
+  ngOnInit() {
+    this.activeBooks = this.userService.getActiveBooks();
+    this.inactiveBooks = this.userService.getInactiveBooks();
+  }
 
   onAdded(book: Book): void {
     const tempBooks = book.isActive ? this.activeBooks : this.inactiveBooks;

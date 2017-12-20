@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookComponent } from './book/book.component';
 
+import { UserService } from './services/user/user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,7 @@ import { BookComponent } from './book/book.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
